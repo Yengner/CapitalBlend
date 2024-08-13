@@ -1,0 +1,43 @@
+.dashboard {
+  @apply grid p-4 lg:p-6 gap-6 grid-cols-3;
+  grid-template-areas:
+    "bal goals bills"
+    "transactions statistics statistics"
+    "transactions expenses expenses";
+}
+
+@media screen and (max-width: 1024px) {
+  .dashboard {
+    grid-template-areas:
+      "bal bal bal"
+      "goals goals goals"
+      "bills bills bills"
+      "transactions transactions transactions"
+      "statistics statistics statistics"
+      "expenses expenses expenses";
+  }
+}
+
+.balance {
+  grid-area: bal;
+}
+
+.goals {
+  grid-area: goals;
+}
+
+.bills {
+  grid-area: bills;
+}
+
+.transactions {
+  grid-area: transactions;
+}
+
+.statistics {
+  grid-area: statistics;
+}
+
+.expenses {
+  grid-area: expenses;
+}
