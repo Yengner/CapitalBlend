@@ -101,6 +101,24 @@ const config = {
           1: "#00214F",
           2: "#344054",
         },
+        yellow: {
+          300: "#FFD54F",  // Lighter yellow
+          500: "#FFC107",  // Primary yellow for food and drink
+          700: "#FFA000",  // Darker yellow
+        },
+        amber: {
+          300: "#FFCC80",  // Lighter amber
+          500: "#FFB74D",  // Primary amber
+          700: "#FF9800",  // Darker amber
+        },
+        orange: {
+          300: "#FFAB91",  // Lighter orange
+          500: "#FF7043",  // Primary orange
+          700: "#F4511E",  // Darker orange
+        },
+        transfer: {
+          500: "#FF5733",  // Custom transfer color
+        },
       },
       boxShadow: {
         form: "0px 1px 2px 0px rgba(16, 24, 40, 0.05)",

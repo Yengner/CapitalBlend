@@ -8,7 +8,7 @@ import {
 } from "recharts";
 
 const GoalChart = () => {
-  const chartData = [{ achieved: 70 }];
+  const chartData = [{ achieved: 60 }];
 
   return (
     <ResponsiveContainer height={144} width={144}>

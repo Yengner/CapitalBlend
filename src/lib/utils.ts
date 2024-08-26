@@ -130,6 +130,37 @@ export function getAccountTypeColors(type: AccountTypes) {
   }
 }
 
+// Updated totalExpenseTransaction function to accept 3 arguments
+export function totalExpenseTransaction(
+  transactions: Transaction[],
+  period: "daily" | "weekly" | "monthly",
+  dateRange: { start: Date; end: Date }
+): number {
+  if (!transactions || transactions.length === 0) return 0;
+
+  // Filter transactions within the date range
+  const filteredTransactions = transactions.filter((transaction) => {
+    const transactionDate = new Date(transaction.date);
+    return transactionDate >= dateRange?.start && transactionDate <= dateRange.end;
+  });
+
+  // Further filter based on period if necessary
+  const expenseTransactions = filteredTransactions.filter(
+    (transaction) => transaction.type === "debit"
+  );
+
+  // Sum the amounts of all expense transactions
+  const totalExpenses = expenseTransactions.reduce(
+    (acc, transaction) => acc + transaction.amount,
+    0
+  );
+
+  return totalExpenses;
+}
+
+
+
+
 export function countTransactionCategories(
   transactions: Transaction[]
 ): CategoryCount[] {

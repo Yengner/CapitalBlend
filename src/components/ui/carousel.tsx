@@ -4,7 +4,7 @@ import useEmblaCarousel, {
 } from "embla-carousel-react";
 
 import { cn } from "@/lib/utils";
-import PaginationDots from "../paginationDots";
+import PaginationDots from "../pagination/dots";
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;

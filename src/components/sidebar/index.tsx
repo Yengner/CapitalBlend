@@ -13,7 +13,6 @@ import { useRouter } from "next/router";
 import { logoutAccount } from "@/lib/actions/user.actions";
 
 const Sidebar = ({ user }: SiderbarProps) => {
-  const firstName = user.name.split(' ')[0];
 
   const handleLogout = async () => {
     const loggedOut = await logoutAccount();
@@ -53,12 +52,12 @@ const Sidebar = ({ user }: SiderbarProps) => {
 
             <div className='footer_name'>
               <p className="text-2xl font-bold text-gray-700">
-                {firstName[0]}
+                {user.firstName[0]}
               </p>
             </div>
 
             <div className="flex flex-col">
-              <span className="font-semibold text-[19px]">{firstName}</span>
+              <span className="font-semibold text-[19px]">{user.firstName}</span>
               <p className="text-[15px] truncate font-normal text-gray-100 ">
                 {user?.email}
               </p>

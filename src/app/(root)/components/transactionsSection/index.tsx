@@ -1,77 +1,56 @@
 "use client";
 
+import { useState } from "react";
 import Card from "@/components/card";
 import Section from "@/components/section";
-import { IoChevronForward, IoFastFoodOutline } from "react-icons/io5";
-import TransactionItem from "./transaction";
-import { LuGamepad2 } from "react-icons/lu";
-import { TbShoppingBag } from "react-icons/tb";
-import { MdOutlineEmojiTransportation } from "react-icons/md";
-import PaginationDots from "@/components/paginationDots";
+import { IoChevronForward } from "react-icons/io5";
+import TransactionItem from "../../../../components/transactions/transaction";
+import PaginationDots from "@/components/pagination/dots";
 import Tabs from "./tabs";
 import styles from "../../style.module.css";
+import Link from "next/link";
 
-const TransactionsSection = () => (
-  <Section
-    className={styles.transactions}
-    title="Recent Transactions"
-    controls={
-      <button className="flex flex-row gap-2 text-xs text-[#878787]">
-        View all <IoChevronForward />
-      </button>
-    }
-  >
-    <Card className="p-6 flex flex-col gap-3">
-      <Tabs />
+const TransactionsSection = ({ accounts, transactions = [], appwriteItemId, page = 1 }: RecentTransactionsProps) => {
+  
+  const [activePage, setActivePage] = useState<number>(0);
 
-      <TransactionItem
-        title="GTR 5"
-        category="Gadget & Gear"
-        amount="$120"
-        date={new Date()}
-        Icon={LuGamepad2}
-      />
+  
+  const transactionsPerPage = 4;
+  const totalPages = 4; 
 
-      <TransactionItem
-        title="Polo Shirt"
-        category="XL fashions"
-        amount="$20.00"
-        date={new Date()}
-        Icon={TbShoppingBag}
-      />
+  const paginatedTransactions = transactions.slice(
+    activePage * transactionsPerPage,
+    (activePage + 1) * transactionsPerPage
+  );
 
-      <TransactionItem
-        title="Burger"
-        category="Food & Beverages"
-        amount="$10.00"
-        date={new Date()}
-        Icon={IoFastFoodOutline}
-      />
+  return (
+    <Section
+      className={styles.transactions}
+      title="Recent Transactions"
+      controls={
+        <button className="flex flex-row gap-2 text-xs text-[#878787]">
+          <Link href={`transactions-history/?id=${appwriteItemId}`}>View all</Link>
+          <IoChevronForward className="items-center mt-0.5" />
+        </button>
+      }
+    >
+      <Card className="p-2 flex flex-col gap-3 min-h-[120px]">
+        <Tabs />
 
-      <TransactionItem
-        title="Taxi Fare"
-        category="Uber"
-        amount="$12.00"
-        date={new Date()}
-        Icon={MdOutlineEmojiTransportation}
-      />
+        {paginatedTransactions.map((transaction) => (
+          <TransactionItem key={transaction.id} transaction={transaction}/>
+        ))}
 
-      <TransactionItem
-        title="Keyboard"
-        category="Gadget & Gear"
-        amount="$22.00"
-        date={new Date()}
-        Icon={LuGamepad2}
-      />
+        <PaginationDots
+          count={totalPages}
+          className="justify-center"
+          activeIndex={activePage}
+          onActiveIndexChange={(index) => setActivePage(index)}
+        />
+        </Card>
 
-      <PaginationDots
-        count={3}
-        className="justify-center"
-        activeIndex={0}
-        onActiveIndexChange={(index) => {}}
-      />
-    </Card>
-  </Section>
-);
+    </Section>
+  );
+};
 
 export default TransactionsSection;

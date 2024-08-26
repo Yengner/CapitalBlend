@@ -10,6 +10,7 @@ import settings from './sidebar/settings.svg';
 import transactions from './sidebar/transactions.svg';
 import logout from './sidebar/logout.svg';
 
+
 // Brand logos
 import Figma from './brands/figma.svg';
 

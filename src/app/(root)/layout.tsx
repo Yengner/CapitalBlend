@@ -16,12 +16,15 @@ export default async function RootLayout({
     if (!user) {
         redirect('/login');
     }
-  return (
-    <main>
-        <div className={twMerge(inter.className, "text-lg flex flex-row text-primary")}>
-                <Sidebar user={user}/>
-                {children}
-        </div>
-    </main>
-  );
-}
+    return (
+      <div className={twMerge(inter.className, "grid grid-cols-[280px_1fr] min-h-screen text-lg flex-row bg-background ")}>
+        {/* Sidebar */}
+        <Sidebar user={user}/>
+  
+        {/* Main content */}
+
+          {children}
+
+      </div>
+    );
+  }

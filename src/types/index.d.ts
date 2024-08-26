@@ -60,7 +60,7 @@ declare type SearchParamProps = {
     type: string;
     subtype: string;
     appwriteItemId: string;
-    sharableId: string;
+    shareableId: string;
   };
   
   declare type Transaction = {
@@ -89,7 +89,7 @@ declare type SearchParamProps = {
     accessToken: string;
     fundingSourceUrl: string;
     userId: string;
-    sharableId: string;
+    shareableId: string;
   };
   
   declare type AccountTypes =
@@ -138,9 +138,8 @@ declare type SearchParamProps = {
   };
   
   declare interface CreditCardProps {
+    showBalance: boolean;
     account: Account;
-    userName: string;
-    showBalance?: boolean;
   }
   
   declare interface BankInfoProps {
@@ -150,6 +149,9 @@ declare type SearchParamProps = {
   }
   
   declare interface HeaderBoxProps {
+    type?: "title" | "greeting";
+    title: string;
+    subtext: string;
     user?: string;
   }
   
@@ -200,9 +202,8 @@ declare type SearchParamProps = {
     appwriteItemId?: string;
   }
   
-  declare interface TotlaBalanceBoxProps {
+  declare interface TotalBalanceBoxProps {
     accounts: Account[];
-    totalBanks: number;
     totalCurrentBalance: number;
   }
   
@@ -219,6 +220,10 @@ declare type SearchParamProps = {
   
   declare interface SiderbarProps {
     user: User;
+  }
+  declare interface TopbarProps {
+    user: User;
+    type?: "greeting" | "date";
   }
   
   declare interface RecentTransactionsProps {
@@ -245,6 +250,14 @@ declare type SearchParamProps = {
     category: CategoryCount;
   }
   
+  declare interface AccountProps{
+    accounts: Account;
+  }
+
+  declare interface AccountProp{
+    account: Account;
+  }
+
   declare interface DoughnutChartProps {
     accounts: Account[];
   }
@@ -325,4 +338,7 @@ declare type SearchParamProps = {
   declare interface getBankByAccountIdProps {
     accountId: string;
   }
-  
+
+  interface AccountsProps {
+    accounts: Account[];
+  }

@@ -6,11 +6,11 @@ import Link from "next/link";
 import Accounts from "./accounts";
 import styles from "../../style.module.css";
 
-const BalanceSection = () => (
+const BalanceSection = ({ accounts = [], totalCurrentBalance}: TotalBalanceBoxProps) => (
   <Section title="Total Balance" className={styles.balance}>
     <Card className="flex flex-col gap-5">
       <div className="flex flex-row justify-between items-center pb-3 border-b border-[#F3F3F3]">
-        <span className="text-1.5xl font-extrabold">$240,399</span>
+        <span className="text-1.5xl font-extrabold">${totalCurrentBalance}</span>
 
         <Link
           href="/accounts"
@@ -20,7 +20,7 @@ const BalanceSection = () => (
         </Link>
       </div>
 
-      <Accounts />
+      <Accounts accounts={accounts} />
     </Card>
   </Section>
 );

@@ -25,7 +25,7 @@ export const SidebarNavItems = [
   {
     title: "Transactions",
     icon: Icons.Sidebar.transactions,
-    link: "/transactions",
+    link: "/transactions-history",
   },
   {
     title: "Bills",
@@ -120,9 +120,9 @@ export const topCategoryStyles = {
 
 export const transactionCategoryStyles = {
   "Food and Drink": {
-    borderColor: "border-pink-600",
-    backgroundColor: "bg-pink-500",
-    textColor: "text-pink-700",
+    borderColor: "border-yellow-600",
+    backgroundColor: "bg-yellow-500",
+    textColor: "text-yellow-700",
     chipBackgroundColor: "bg-inherit",
   },
   Payment: {
@@ -138,9 +138,9 @@ export const transactionCategoryStyles = {
     chipBackgroundColor: "bg-inherit",
   },
   Transfer: {
-    borderColor: "border-red-700",
-    backgroundColor: "bg-red-700",
-    textColor: "text-red-700",
+    borderColor: "border-orange-700",
+    backgroundColor: "bg-orange-500",
+    textColor: "text-orange-500",
     chipBackgroundColor: "bg-inherit",
   },
   Processing: {

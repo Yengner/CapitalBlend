@@ -10,7 +10,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 
-const Accounts = () => {
+const Accounts = ({ accounts } : AccountsProps) => {
   const [api, setApi] = useState<CarouselApi>();
 
   const [total, setTotal] = useState<number>(0);
@@ -32,28 +32,22 @@ const Accounts = () => {
     return () => {
       api?.off("select", onScroll);
     };
-  }, [api]);
+  }, [api, accounts]);
 
   return (
     <>
       <Carousel setApi={setApi} className="flex flex-col gap-6">
         <CarouselContent>
-          <CarouselItem>
-            <AccountsItem />
-          </CarouselItem>
-          <CarouselItem>
-            <AccountsItem />
-          </CarouselItem>
-          <CarouselItem>
-            <AccountsItem />
-          </CarouselItem>
+          {accounts.map((account) => (
+            <CarouselItem key={account.id}>
+              <AccountsItem account={account} />
+            </CarouselItem>
+          ))}
         </CarouselContent>
 
         <div className="flex flex-row items-center max-h-5 justify-between">
           <button
-            onClick={() => {
-              api?.scrollPrev();
-            }}
+            onClick={() => api?.scrollPrev()}
             disabled={activeIndex <= 0}
             className="w-20 flex flex-row items-center gap-1 text-sm disabled:text-[#D1D1D1] text-primary"
           >
@@ -64,10 +58,8 @@ const Accounts = () => {
           <CarouselDots />
 
           <button
-            onClick={() => {
-              api?.scrollNext();
-            }}
-            disabled={activeIndex >= total - 1}
+            onClick={() => api?.scrollNext()}
+            disabled={activeIndex >= total }
             className="w-20 flex flex-row items-center justify-end gap-1 text-sm disabled:text-[#D1D1D1] text-primary"
           >
             Next
