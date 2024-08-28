@@ -22,8 +22,10 @@ const HomePage = async ({ searchParams: {id, page}}: SearchParamProps) => {
   const appwriteItemId = (id as string) || accountsData[0]?.appwriteItemId;
 
   const account = await getAccount({ appwriteItemId })
+  const period = new Date().toDateString();
 
-  const transactionsExpenses = totalExpenseTransaction(account?.transactions);
+
+  const transactionsExpenses = totalExpenseTransaction(account?.transactions, period, );
 
   return (
     <main className="flex-1 bg-background">

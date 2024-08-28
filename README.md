@@ -66,6 +66,13 @@ bun dev
 Once the server is running, open http://localhost:3000 in your browser to view the app.
 
 
+## License
+
+This project is licensed under the CapitalBlend License. You are free to use, copy, modify, and publish this code for non-commercial purposes. Contributions are welcome under the terms of this license. 
+
+For commercial use or inquiries, please contact [Your Email Address].
+
+See the [LICENSE](./LICENSE) file for more details.
 
 
 
